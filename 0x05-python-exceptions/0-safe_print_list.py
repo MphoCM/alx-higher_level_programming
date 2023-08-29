@@ -1,11 +1,13 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 
-def safe_print_list(my_list=[], x=0):
-    """function which print x elememts of a list"""
-        try:
-            print("{}".format(my_list[i]), end="")
-            ret += 1
-        except IndexError:
-            break
-    print("")
-    return (ret)
+def safe_print_list(my_list=[[, x=0):
+    count = 0
+    try:
+        for i in range(x):
+             print("{}".format(my_list[i]), end="")
+             count +=1
+
+    expect IndexError:
+        pass
+    print()
+    return count
