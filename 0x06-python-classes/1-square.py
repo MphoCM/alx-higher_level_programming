@@ -1,13 +1,14 @@
 #!/usr/bin/python3
-"""Module docstring."""
+"""Define a class Square."""
 
 
 class Square:
-    """Create a square class object."""
-    def __intit__(self, size):
-        self.__size = size
-        """
-        instantiates square object with parameter
+    """Represent a square."""
+
+    def __init__(self, size):
+        """Initialize a new Square.
+
         Args:
-            __size(int): size of square
+            size (int): The size of the new square.
         """
+        self.__size = size
