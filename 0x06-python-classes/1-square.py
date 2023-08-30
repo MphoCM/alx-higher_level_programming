@@ -1,15 +1,13 @@
-#!usr/bin/python3
-"""Defines a basic square class"""
+#!/usr/bin/python3
+"""Module docstring."""
 
-class:
-    """Represents a class named square
-    Attributes:
-    _size : private
-    """
-    def _definit_(self, _size):
-        """Initializing the square object with a private size attribute
-        Arg :
-        _size : size of square
+
+class Square:
+    """Create a square class object."""
+    def __intit__(self, size):
+        self.__size = size
         """
-
-        self._size = _size
+        instantiates square object with parameter
+        Args:
+            __size(int): size of square
+        """
