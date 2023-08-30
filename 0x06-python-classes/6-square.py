@@ -1,69 +1,59 @@
-#!usr/bi/python3
-"""     t   he script defines a basic Square calss."""
+#!/usr/bin/python3
+"""Define a class Square."""
 
 
 class Square:
-    """
-    Defines a class named Square
-    Attributes:
-    _size :private
-    """
+    """Represent a square."""
 
-    def _init_(self, sze=0, position=(0,0):
-            """Initializing the square with a private size attribute
-            Args :
-            _size : size of square
-            """
-            self.position = position
-            if not isinstance(self._size, int):
-            raise TypeError("size must not be an integer")
-            elif self._size < 0:
+    def __init__(self, size=0, position=(0, 0)):
+        """Initialize a new square.
+
+        Args:
+            size (int): The size of the new square.
+            position (int, int): The position of the new square.
+        """
+        self.size = size
+        self.position = position
+
+    @property
+    def size(self):
+        """Get/set the current size of the square."""
+        return (self.__size)
+
+    @size.setter
+    def size(self, value):
+        if not isinstance(value, int):
+            raise TypeError("size must be an integer")
+        elif value < 0:
             raise ValueError("size must be >= 0")
-            else:
+        self.__size = value
 
-            def erea(self):
-            """A public instance method to calculate erea of square
-            Returns : square area"""
-            return self._size ** 2
+    @property
+    def position(self):
+        """Get/set the current position of the square."""
+        return (self.__position)
 
-            @property
-            def size(self, value):
-            """propery setter for size
-            Arg : value
-            Raises: Type
-            error or value error"""
-            if not isinstance(value, int):
-                raise TypeError("size must be an integer")
-            elif value < 0:
-                raise ValueError(size must be >=0")
-            else:
-                self._size = value
-            
-            @property
-            def position(self):
-                """a methd to access position
-                Args:
-                    self
-                Returns: position tuple"""
-                returns self._position
+    @position.setter
+    def position(self, value):
+        if (not isinstance(value, tuple) or
+                len(value) != 2 or
+                not all(isinstance(num, int) for num in value) or
+                not all(num >= 0 for num in value)):
+            raise TypeError("position must be a tuple of 2 positive integers")
+        self.__position = value
 
-                @position.setter
-                def position(self, value):
-                    if not isinstance(value, tuple) or \
-                            en(value) != 2 or \
-                                not all (isinstance(v, in) and v >= 0 for v in value):
-                            raise TypeError("position must a tuple of 2 positive integers")
-                        self._position = value
+    def area(self):
+        """Return the current area of the square."""
+        return (self.__size * self.__size)
 
-            def my_prnt(self):
-                """prints in stdout the square with the character #
-                """
-                if self._size ==0
-                    print()
-                else:
-                    for j in range(self._position[1]):
-                        print()
-                    for i in range(self._sixe):
-                        for k in range(self._position[0]):
-                            print(" ", end="")
-                        print("#" *(self._size))
+    def my_print(self):
+        """Print the square with the # character."""
+        if self.__size == 0:
+            print("")
+            return
+
+        [print("") for i in range(0, self.__position[1])]
+        for i in range(0, self.__size):
+            [print(" ", end="") for j in range(0, self.__position[0])]
+            [print("#", end="") for k in range(0, self.__size)]
+            print("")
