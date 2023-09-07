@@ -4,4 +4,4 @@
 
 class Rectangle:
     """Empty rectangle"""
-    pass
+    pass # An empty block
