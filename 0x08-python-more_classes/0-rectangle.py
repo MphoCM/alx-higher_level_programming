@@ -1,7 +1,9 @@
-#!usr/bin/python3
-"""Emty rectangle class"""
+#!/usr/bin/python3
+"""Below is a class that defines
+a rectangle.
+"""
 
 
 class Rectangle:
-    """Empty rectangle"""
-    pass # An empty block
+    """Defining an empty square class."""
+    pass  # An empty block
