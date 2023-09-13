@@ -1,35 +1,23 @@
 #!/usr/bin/python3
 """
-Module for basic class implementation
+Class object with public instance
+methods that raise exception messages.
 """
 
 
 class BaseGeometry:
-    """Basic class named BaseGeometry
-    """
+    """Creates instance of class object."""
+    def __init__(self):
+        """Initialises class."""
+        pass
 
     def area(self):
-        """
-        Public instance method: raises exception
-        No implementation yet
-        Exception: area() is not implemented
-        """
+        """Raises Exception."""
         raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
-        """
-        public instance method: validate value
-        Args :
-            name and value
-        Raises :
-            if value is not an integer: TypeError exception,
-            with the message <name> must be an integer
-            if value is less or equal to 0: raise a ValueError
-            exception with the message <name> must be greater than 0
-        """
-
-        if type(value) != int:
+        """Validates value"""
+        if type(value) is not int:
             raise TypeError("{} must be an integer".format(name))
-
         if value <= 0:
             raise ValueError("{} must be greater than 0".format(name))
