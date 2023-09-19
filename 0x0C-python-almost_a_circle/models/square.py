@@ -1,112 +1,66 @@
 #!/usr/bin/python3
+
+"""This module is about a class Square that inherits from Rectangle
 """
-Below class inherits from Base class.
-"""
-from models.base import Base
+
+from models.rectangle import Rectangle
 
 
-class Rectangle(Base):
-    """Created instance of class."""
-    def __init__(self, width, height, x=0, y=0, id=None):
-        """Initialises class."""
-        self.width = width
-        self.height = height
-        self.x = x
-        self.y = y
-        super().__init__(id)
+class Square(Rectangle):
+    """class Square that inherits from Rectangle
+    Args:
+       Rectangle (_type_): id, size, x, y
+    """
 
-    def validator(self, name, value):
-        """Validates other methods."""
-        if not isinstance(value, int):
-            raise TypeError("{} must be an integer".format(name))
-        if (name == "width" or name == "height") and value <= 0:
-            raise ValueError("{} must be > 0".format(name))
-        if (name == "x" or name == "y") and value < 0:
-            raise ValueError("{} must be >= 0".format(name))
+    def __init__(self, size, x=0, y=0, id=None):
+        """Constructor method"""
+        super().__init__(size, size, x, y, id)
+
+    @property
+    def size(self):
+        """size getter"""
+        return self.width
+
+    @size.setter
+    def size(self, val):
+        """size setter"""
+        if type(val) != int:
+            raise TypeError("size must be an integer")
+        if val < 0:
+            raise ValueError("size must be greater than zero!")
+        self.width = val
+        self.height = val
 
     def update(self, *args, **kwargs):
-        """Assigns argument to each attribute."""
-        if args:
-            i = 0
-            keys = ['id', 'width', 'height', 'x', 'y']
+        """that assigns attributes to args
+
+        Returns:
+            key and value if kwargs
+        """
+        if args and len(args) != 0:
             for arg in args:
-                setattr(self, keys[i], arg)
-                i += 1
-        elif kwargs:
-            for key, value in kwargs.items():
-                if hasattr(self, key):
-                    setattr(self, key, value)
-
-    def to_dictionary(self):
-        """Returns dict representation of Rectangle."""
-        my_dict = {
-                'id': self.id,
-                'width': self.width,
-                'height': self.height,
-                'x': self.x,
-                'y': self.y
-        }
-        return my_dict
-
-    @property
-    def width(self):
-        """Retrieves width."""
-        return self.__width
-
-    @property
-    def height(self):
-        """Retrieves height."""
-        return self.__height
-
-    @property
-    def x(self):
-        """Retrieves x attr."""
-        return self.__x
-
-    @property
-    def y(self):
-        """Retrieves y attr."""
-        return self.__y
-
-    @width.setter
-    def width(self, value):
-        """Sets width."""
-        self.validator("width", value)
-        self.__width = value
-
-    @height.setter
-    def height(self, value):
-        """Sets height."""
-        self.validator("height", value)
-        self.__height = value
-
-    @x.setter
-    def x(self, value):
-        """Sets x attr."""
-        self.validator("x", value)
-        self.__x = value
-
-    @y.setter
-    def y(self, value):
-        """Sets y attr."""
-        self.validator("y", value)
-        self.__y = value
-
-    def area(self):
-        """Returns rectangle area."""
-        return (self.width * self.height)
-
-    def display(self):
-        """
-        Prints rectangle to stdout
-        using '#'.
-        """
-        print('\n' * self.y, end="")
-        print(''.join(' ' * self.x + '#' * self.width + '\n'
-              for times in range(self.height)), end="")
+                if len(args) >= 1:
+                    self.id = args[0]
+                if len(args) >= 2:
+                    self.size = args[1]
+                if len(args) >= 3:
+                    self.x = args[2]
+                if len(args) >= 3:
+                    self.x = args[2]
+        else:
+            for k, v in kwargs.items():
+                return (k, v)
 
     def __str__(self):
-        """Modifies str obj."""
-        return ("[{}] ({}) {}/{} - {}/{}".format(
-            type(self).__name__, self.id, self.x,
-            self.y, self.width, self.height))
+        """string representation
+
+        Returns:
+            string representation [Rectangle] (<id>) <x>/<y> - <width>/<height>
+        """
+        return f"[Square]\
+ ({self.id})  {self.x}/{self.y} - {self.width}"
+
+    def to_dictionary(self):
+        """returns the dictionary representation of a Square
+        """
+        return {'id': self.id, 'x': self.x, 'size': self.size, 'y': self.y}
