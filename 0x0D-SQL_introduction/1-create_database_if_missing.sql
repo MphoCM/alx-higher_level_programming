@@ -1,2 +1,2 @@
--- a script that creates the database hbtn_0c_0 in MySQL sever.
-CREATE DATABASE IF NOT EXITS 'hbtn_0c_0';
+-- a script that creates the database
+CREATE DATABASE IF NOT EXISTS hbtn_0c_0;
