@@ -1,10 +1,8 @@
--- a script that lists all shows contained in hbtn_0d_tvshows without a genre linked.
--- Each record should display: tv_shows.title - tv_show_genres.genre_id
--- ascending order by tv_shows.title and tv_show_genres.genre_id
-
-SELECT tv_shows.title, tv_show_genres.genre_id
-FROM tv_shows
-LEFT OUTER JOIN tv_show_genres
-ON tv_shows.id = tv_show_genres.show_id
-WHERE tv_show_genres.genre_id IS NULL
-ORDER BY tv_shows.title ASC, tv_show_genre_id ASC;
+-- script lists all shows
+-- without genre linked
+SELECT ts.title, tg,genre_id
+FROM tv_shows AS ts
+LEFT JOIN tv_show_genres AS tg
+ON ts.id = tg.show_id
+WHERE tg.genre_id S NULL
+ORDER BY ts.title ASC, tg.genre_id ASC;
