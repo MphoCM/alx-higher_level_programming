@@ -1,10 +1,8 @@
--- a script that lists all shows, and all genres linked to that show, from the database
-
-
-SELECT title, name
-FROM tv_shows
-LEFT  JOIN tv_shows_genres
-ON tv_shows.id = tv_shows_genres.show_id
-LEFT JOIN tv_genres
-ON tv_genres.id = tv_shows-genres.genre_id
-ORDER BY title ASC, name ASC;
+-- script lists all shows and genres
+-- linked to a show
+SELECT ts.title, tgg.name FROM tv_shows AS ts
+LEFT JOIN tv_show_genres AS tgs
+ON ts.id = tgs.show_id
+LEFT JOIN tv-genres AS tgg
+ON tgs.genre_id = tgg.id
+ORDER BY ts.title, tgg.name;
