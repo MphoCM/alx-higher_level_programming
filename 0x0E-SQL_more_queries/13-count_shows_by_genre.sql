@@ -1,8 +1,8 @@
 -- script lists all genres and displays
 -- number of shows linked to each genre
 SELECT tgs.name AS genre, COUNT(tg.genre_id) AS number_shows
-FROM tv-shows AS ts
-LEFT JOIN tv_show-genres AS tg
+FROM tv_shows AS ts
+LEFT JOIN tv_show_genres AS tg
 ON ts.id = tg.show_id
 LEFT JOIN tv_show_genres AS tgs
 ON tg.genre_id = tgs.id
