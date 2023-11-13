@@ -1,8 +1,7 @@
 #!/usr/bin/node
 
-const converted = parseInt(process.argv[2]);
-if (!isNaN(converted)) {
-	console.log('My number: ' + converted);
-} else {
-	console.log('Not a number');
+const arr = ['C is fun', 'Python is cool', 'JavaScript is amazing'];
+
+for (let i = 0; i < arr.length; i++) {
+  console.log(arr[i]);
 }
