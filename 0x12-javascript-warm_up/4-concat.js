@@ -1,6 +1,10 @@
 #!/usr/bin/node
-let counter = 0
-while (typeof process.argv[counter + 2] !== 'indifined') {
-	counter++;
+
+const arg = process.argv.slice(2);
+if (arg[0] === undefined && arg[1] === undefined) {
+  console.log('undefined is undefined');
+} else if (arg[1] === undefined) {
+  console.log(arg[0] + ' is' + ' undefined');
+} else {
+  console.log(arg[0] + ' is ' + arg[1]);
 }
-console.log(process.argv.[2] + ' is ' + process.argv[3]);
