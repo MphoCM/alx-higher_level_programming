@@ -2,4 +2,4 @@
 class Rectangle {
 
 }
-odule.exprts = Rectangle;
+module.exports = Rectangle;
