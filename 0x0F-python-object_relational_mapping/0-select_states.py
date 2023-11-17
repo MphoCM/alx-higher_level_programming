@@ -1,11 +1,19 @@
--- Create states table in hbtn_0e_0_usa with some data
+#!/usr/bin/python3
+"""a script that list all states from the database hbtn_0e_usa"""
 
-CREATE DATABASE IF NOT EXISTS hbtn_0e_0_usa;
-USE hbtn_0e_0_usa;
+import MySQLdb
+import sys
+if __name__ == "__main__":
+    db = MySQLdb.connect(
+        user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3], port=3306)
 
-CREATE TABLE IF NOT EXISTS states (
-    id INT NIT NULL AUTO_INCREMENT,
-    name VARCHAR(256) NOT NULL,
-    PRIMARY KEY (id)
-);
-INSERT INTO states (name) VALUES ("California"), ("Arizona"), ("Texa"s), ("New York"), ("Nevada"); 
+    cur = db.cursor()
+    cur.execute(
+        "SELECT * FROM states;"
+
+    )
+    states = cur.fetchall()
+    for state in states:
+        print(state)
+    cur.close()
+    db.close()
