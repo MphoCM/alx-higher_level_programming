@@ -1,19 +1,16 @@
 #!/usr/bin/python3
-"""
-import sys
-from model_state import Base, State
-from aqlachemy import create_engine
-from sqlachemy.orm import sessionmaker
+"""a python file contains the class definition of a State
+and an instance Base = declarative_base()"""
+
+from sqlalchemy import Column, Integer, String, MetaData
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
+metadata = MetaData()
 
 
-if __name__ == '__main__':
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.
-                           format(sys.argv[1], sys.argv[2], sys.argv[3]),
-                           pool_pre_ping=True)
-    Session = sessionmaker(bind=engine)
-    session = Session()
-
-    states = session.query(State).order_by(State.id).all()
-
-    for state in states:
-        print("{}: {}".format(state.id, state.name))
+class State (Base):
+    """class inherits from Base"""
+    __tablename__ = 'states'
+    id = Column(Integer, primary_key=True, unique=True, nullable=False)
+    name = Column(String(128), nullable=False)
