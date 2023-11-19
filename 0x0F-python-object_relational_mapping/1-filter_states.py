@@ -14,3 +14,7 @@ if __name__ == "__main__":
     states = cur.fetchall()
     for state in states:
         print(state)
+
+
+if __name__ == "__main__":
+    main(sys.argv)
