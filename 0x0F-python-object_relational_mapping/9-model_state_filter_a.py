@@ -1,13 +1,11 @@
 #!/usr/bin/python3
 """
-Write a script lists all State objects
-that contain the letter a from database hbtn_0e_6_usa"""
-
-
+Import modules for script.
+"""
 import sys
 from model_state import Base, State
 from sqlalchemy import create_engine
-from sqlalchemy import MetData
+from sqlalchemy import MetaData
 from sqlalchemy.orm import sessionmaker
 
 
