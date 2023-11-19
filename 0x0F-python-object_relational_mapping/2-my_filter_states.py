@@ -1,20 +1,34 @@
 #!/usr/bin/python3
-""" a script that takes in an argument and displays all values in the states
-table of hbtn_0e_0_usa where name matches the argument."""
-
+"""
+Import modules for script.
+"""
 import sys
 import MySQLdb
 
-if__name__ == "__main__":
+
+def main(args):
+    """
+    Script displays all values in database table
+    where name matches the argument.
+    """
+    if len(args) != 5:
+        raise Exception("4 arguments needed!")
     db = MySQLdb.connect(
-            user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3], port=3306)
-
+            host='localhost',
+            user=args[1],
+            passwd=args[2],
+            db=args[3]
+            )
     cur = db.cursor()
-    stateName = sys.argv[4]
     cur.execute(
-            "SELECT * FROM state WHERE name = '{}" \
-                    ORDER BY id ASC;".format(stateName))
-
-    statea = cur.fetchall()
+            "SELECT * FROM states WHERE name LIKE '{}' ORDER BY id ASC"
+            .format(args[4])
+            )
+    states = cur.fetchall()
     for state in states:
-        print(state)
+        if state[1] == args[4]:
+            print(state)
+
+
+if __name__ == "__main__":
+    main(sys.argv)
