@@ -5,13 +5,25 @@
 import sys
 import MySQLdb
 
-if __name__ == "__main__":
+
+def main(args):
+    """Script lists all cities from database."""
+    if len(args) != 4:
+        raise Exception("3 arguments needed!")
     db = MySQLdb.connect(
-        user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3], port=3306)
-
+            host='localhost',
+            user=args[1],
+            passwd=args[2],
+            db=args[3]
+            )
     cur = db.cursor()
-    cur.execute("SELECT * FROM cities ORDER BY id ASC;")
+    cur.execute("SELECT c.id,\
+            c.name, s.name FROM cities c\
+            JOIN states s ON s.id=c.state_id ORDER BY c.id")
+    states = cur.fetchall()
+    for state in states:
+        print(state)
 
-    cities = cur.fetchall()
-    for city in cities:
-        print(city)
+
+if __name__ == "__main__":
+    main(sys.argv)
