@@ -1,0 +1,19 @@
+# 0-add_integer.txt
+===========================
+How to use 0-add_integer.py
+===========================
+
+This is test file for the function called ``add_integer()``
+
+Numerical values
+===========================
+
+``add_integer()`` returns an integer which is the addition of its arguments
+using the ``+`` operator.
+
+::
+    >>> add_integer = __import__("0-add_integer").add_integer
+    >>> add_integer(1, 6)
+    7
+
+Floating-point values are also supported.
