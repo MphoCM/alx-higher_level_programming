@@ -1,18 +1,16 @@
 #!/usr/bin/python3
+"""a Python script that takes in a URL,
+sends a request to the URL and
+displays the body of the response
+(decoded in utf-8).
 """
-Below script sends request URL and displays body of response
-or error codes
-""""
-import sys
-import urllib.request
-import urllib.parse
-import urllib.error
-
 
 if __name__ == "__main__":
+    import sys
+    from urllib import request, error
+
     try:
-        with urllib.request.urlopen(sys.argv[1]) as response:
-            page = response.read().decode('utf-8')
-            print(page)
-    except urllib.error.URLError as err:
-        print("Error code: {}".format(err.code))
+        with request.urlopen(sys.argv[1]) as res:
+            print(res.read().decode('UTF-8'))
+    except error.HTTPError as er:
+        print('Error code:', er.code)
