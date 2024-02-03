@@ -1,7 +1,12 @@
 #!/usr/bin/node
-
-const arr = ['C is fun', 'Python is cool', 'JavaScript is amazing'];
-
-for (let i = 0; i < arr.length; i++) {
-  console.log(arr[i]);
+const process = require('process');
+let resp;
+let num;
+resp = 'Not a number';
+if (process.argv.length > 2) {
+  num = parseInt(process.argv[2]);
+  if (!isNaN(num)) {
+    resp = 'My number: ' + String(num);
+  }
 }
+console.log(resp);
